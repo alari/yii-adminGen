@@ -1,0 +1,73 @@
+/*reset */
+
+.b-form fieldset{
+    border:none;
+}
+
+.b-form{
+    position:relative;
+    width:25em;
+}
+
+.e-form-row{
+    position:relative;
+    padding-bottom:2em;
+    margin-bottom:.25em;
+}
+
+.error .e-form-error-message{
+    position:absolute;
+    bottom:-.5em;
+    color:#a459b3;
+    display:block;
+}
+
+.e-form-error-message{
+    display:none;
+}
+
+.b-form .e-form-input, .b-form .e-form-textarea{
+    display:block;
+    width:25em;
+    border:3px solid #233046;
+    border-radius:10px;
+    background:transparent;
+    background:rgba(0,0,0,.1);
+    font-size:1.2em;
+    padding:0 .5em;
+    color:#8c99ae;
+}
+
+.b-form .e-form-input:focus, .b-form .e-form-textarea:focus{
+    border-color:#5775cf;
+}
+
+.e-form-input{
+    height:2.25em;
+}
+
+.e-form-submit{
+
+}
+
+.e-form-label{
+    display:block;
+    font-size:1.25em;
+    margin-bottom:.5em;
+}
+
+.e-form-submit{
+    padding:0 2em;
+    position:absolute;
+    float:right;
+    background:transparent;
+    border:none;
+}
+
+.e-form-textarea{
+    resize:vertical;
+}
+
+.e-form-error-message{
+
+}

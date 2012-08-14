@@ -2,18 +2,6 @@
 
 class AdminGenModule extends CWebModule
 {
-	public function init()
-	{
-		// this method is called when the module is being created
-		// you may place code here to customize the module or the application
-
-		// import the module-level models and components
-		$this->setImport(array(
-			'adminGen.models.*',
-			'adminGen.components.*',
-		));
-	}
-
 	public function beforeControllerAction($controller, $action)
 	{
 		if(parent::beforeControllerAction($controller, $action))
@@ -25,4 +13,11 @@ class AdminGenModule extends CWebModule
 		else
 			return false;
 	}
+
+    public function getAdminLinks() {
+        foreach(Yii::app()->getModules() as $module) {
+
+        }
+        return Yii::app()->getController()->menu;
+    }
 }
