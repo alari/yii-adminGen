@@ -2,6 +2,8 @@
 
 class AdminGenModule extends CWebModule
 {
+    public $addControllerMenu = true;
+
     public function beforeControllerAction($controller, $action)
     {
         if (parent::beforeControllerAction($controller, $action)) {
@@ -23,17 +25,19 @@ class AdminGenModule extends CWebModule
                 if(!isset($addLinks[0]) || !is_array($addLinks[0])) {
                     $addLinks = array($addLinks);
                 }
-                $links += $addLinks;
+                foreach($addLinks as $l) $links[] = $l;
             }
         }
 
         // Controller admin links
-        $addLinks = Yii::app()->getController()->menu;
-        if(is_array($addLinks) && count($addLinks)) {
-            if(!isset($addLinks[0]) || !is_array($addLinks[0])) {
-                $addLinks = array($addLinks);
+        if($this->addControllerMenu) {
+            $addLinks = Yii::app()->getController()->menu;
+            if(is_array($addLinks) && count($addLinks)) {
+                if(!isset($addLinks[0]) || !is_array($addLinks[0])) {
+                    $addLinks = array($addLinks);
+                }
+                foreach($addLinks as $l) $links[] = $l;
             }
-            $links += $addLinks;
         }
 
         return $links;
