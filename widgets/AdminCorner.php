@@ -5,17 +5,27 @@
  */
 class AdminCorner extends CWidget
 {
-    public function run(){
+    public function run()
+    {
         // Get assets dir
         $baseDir = dirname(__FILE__);
         $assets = Yii::app()->getAssetManager()->publish($baseDir . DIRECTORY_SEPARATOR . 'assets');
 
         // Publish required assets
         $cs = Yii::app()->getClientScript();
-        $cs->registerCssFile($assets.'/b-admin-panel.css');
+        $cs->registerCssFile($assets . '/b-admin-panel.css');
 
-        $this->render("adminCorner", array(
-            "items"=>Yii::app()->getModule("adminGen")->getAdminLinks()
+        $items = Yii::app()->getModule("adminGen")->getAdminLinks();
+
+        foreach ($items as $i => $item) {
+            if (isset($item['visible']) && !$item['visible']) {
+                unset($items[$i]);
+                continue;
+            }
+        }
+
+        if (count($items)) $this->render("adminCorner", array(
+            "items" => $items
         ));
     }
 }
