@@ -41,7 +41,12 @@ class AdminGenModule extends CWebModule
                 if (!isset($addLinks[0]) || !is_array($addLinks[0])) {
                     $addLinks = array($addLinks);
                 }
-                foreach ($addLinks as $l) $links[] = $l;
+                foreach ($addLinks as $l) {
+                    if (!array_key_exists("visible", $l)) {
+                        $l["visible"] = !Yii::app()->user->isGuest;
+                    }
+                    $links[] = $l;
+                }
             }
         }
 
