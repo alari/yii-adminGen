@@ -45,7 +45,6 @@ class AdminGenController extends Controller
 
         $cs = Yii::app()->getClientScript();
         $cs->registerCssFile($assets . '/css/bootstrap.css');
-        $cs->registerScriptFile($assets . '/js/jquery.js');
         $cs->registerScriptFile($assets . '/js/bootstrap.js');
 
 

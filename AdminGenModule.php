@@ -4,15 +4,12 @@ class AdminGenModule extends CWebModule
 {
     public $addControllerMenu = true;
 
-    public function beforeControllerAction($controller, $action)
-    {
-        if (parent::beforeControllerAction($controller, $action)) {
-            // this method is called before any module controller action is performed
-            // you may place customized code here
-            return true;
-        } else
-            return false;
+    private $assets;
+
+    public function init() {
+        $this->assets = Yii::app()->getAssetManager()->publish(__DIR__ . DIRECTORY_SEPARATOR . 'assets');
     }
+
     public function getLinks()
     {
         $links = array();
@@ -90,5 +87,11 @@ class AdminGenModule extends CWebModule
             return $moduleLinks[$name];
         }
         return null;
+    }
+
+    public function populateAdminAssets() {
+        $cs = Yii::app()->getClientScript();
+        $cs->registerCssFile($this->assets . '/css/bootstrap.css');
+        $cs->registerScriptFile($this->assets . '/js/bootstrap.js');
     }
 }

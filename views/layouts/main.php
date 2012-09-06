@@ -3,10 +3,7 @@
 <html>
 <head>
     <title><?php echo CHtml::encode(Yii::app()->name); ?>  Admin</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.css" />
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/files/js/jquery.js"></script>
-
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/files/js/bootstrap.js"></script>
+    <?Yii::app()->getModule("adminGen")->populateAdminAssets()?>
 
     <style type="text/css">
         body {
@@ -28,7 +25,7 @@
             <a href="#" class="brand"><?php echo CHtml::encode(Yii::app()->name); ?> admin</a>
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    <li class="active"><a href="/adminGen/adminGen/index">Панель</a></li>
+                    <li class="active"><?=CHtml::link("Панель", array("/adminGen/adminGen/index"))?></li>
 
                     <?php foreach($links as $link): ?>
                         <?php if(isset($link['items'])):?>
@@ -61,7 +58,12 @@
 <div class="container-fluid">
 
     <div class="row-fluid">
-        <div class="span3">
+
+        <div class="span8 offset1">
+            <?php echo $content; ?>
+        </div>
+
+        <div class="span2">
 
             <?php
             $this->beginWidget('zii.widgets.CPortlet', array(
@@ -74,10 +76,6 @@
             $this->endWidget();
             ?>
 
-        </div>
-
-        <div class="span9">
-            <?php echo $content; ?>
         </div>
 
     </div>
