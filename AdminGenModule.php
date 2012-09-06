@@ -13,6 +13,27 @@ class AdminGenModule extends CWebModule
         } else
             return false;
     }
+    public function getLinks()
+    {
+        $links = array();
+        foreach (Yii::app()->getModules() as $name => $conf) if($name != 'user') {
+            $module = Yii::app()->getModule($name);
+            $addLinks = method_exists($module, "adminGenLinks") ? $module->adminGenLinks() : $this->getModuleAdminLinks($name);
+            if (is_array($addLinks) && count($addLinks)) {
+                if (!isset($addLinks[0]) || !is_array($addLinks[0])) {
+                    $addLinks = array($addLinks);
+                }
+                foreach ($addLinks as $l) {
+                    if (!array_key_exists("visible", $l)) {
+                        $l["visible"] = !Yii::app()->user->isGuest;
+                    }
+                    $links[] = $l;
+                }
+            }
+        }
+
+        return $links;
+    }
 
     public function getAdminLinks()
     {
