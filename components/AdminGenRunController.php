@@ -3,7 +3,7 @@
  * @author alari
  * @since 9/6/12 7:58 PM
  */
-class AdminGenController extends CController
+class AdminGenRunController extends CController
 {
     public function run($actionID) {
         if(in_array($actionID, array(
