@@ -91,6 +91,7 @@ class AdminGenModule extends CWebModule
 
     public function populateAdminAssets() {
         $cs = Yii::app()->getClientScript();
+        $cs->registerCoreScript("jquery");
         $cs->registerCssFile($this->assets . '/css/bootstrap.css');
         $cs->registerScriptFile($this->assets . '/js/bootstrap.js');
     }
