@@ -6,11 +6,24 @@
 class AdminGenRunController extends CController
 {
     public function run($actionID) {
-        if(in_array($actionID, array(
-            "admin", "manage", "create", "update"
-        ))) {
-            $this->layout = "adminGen.views.layouts.main";
+        $id = $this->module->id."/".$this->id."/".$actionID;
+        $override = Yii::app()->getModule("adminGen")->override;
+        foreach($override as $l) {
+            if($this->endsWith($id, $l)) {
+                $this->layout = "adminGen.views.layouts.main";
+                break;
+            }
         }
         parent::run($actionID);
+    }
+
+    private function endsWith($haystack, $needle)
+    {
+        $length = strlen($needle);
+        if ($length == 0) {
+            return true;
+        }
+
+        return (substr($haystack, -$length) === $needle);
     }
 }

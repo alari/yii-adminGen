@@ -1,4 +1,6 @@
-<?php $links = Yii::app()->getModule('adminGen')->getLinks();?>
+<?php
+$links = Yii::app()->getModule('adminGen')->getLinks();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,46 +13,37 @@
             padding-bottom: 40px;
         }
     </style>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container-fluid">
-            <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
             <a href="#" class="brand"><?php echo CHtml::encode(Yii::app()->name); ?> admin</a>
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <li class="active"><?=CHtml::link("Панель", array("/adminGen/adminGen/index"))?></li>
 
-                    <?php foreach($links as $link): ?>
-                        <?php if(isset($link['items'])):?>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <?php echo $link['label'] ?>
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <?php foreach ($link['items'] as $subLink): ?>
-                                    <li><a href="<?php echo $subLink['url'][0] ?>"><?php echo $subLink['label'] ?></a></li>
-                                    <?php endforeach ?>
-                                </ul>
-                            </li>
-                        <?php else: ?>
-                            <li>
-                                <a href="<?php echo $link['url'][0] ?>">
-                                    <?php echo $link['label'] ?>
-                                </a>
-                            </li>
-                        <?php endif ?>
-                    <?php endforeach ?>
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li><?=CHtml::link("Панель", array("/adminGen/adminGen/index"))?></li>
+
+                    <? foreach ($links as $link) { ?>
+                    <? if (isset($link['items'])) { ?>
+                        <li class="dropdown">
+                            <?=CHtml::link($link['label'] . '<b class="caret"></b>', $link['url'] ? : "#", array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'))?>
+                            <?$this->widget('zii.widgets.CMenu', array(
+                            'items' => $link['items'],
+                            'htmlOptions' => array('class' => 'dropdown-menu'),
+                        ));?>
+                        </li>
+                        <? } else { ?>
+                        <li>
+                            <?=CHtml::link($link['label'], $link['url'])?>
+                        </li>
+                        <? } ?>
+                    <? }?>
 
                 </ul>
-            </div><!--/.nav-collapse -->
+            </div>
+            <!--/.nav-collapse -->
         </div>
     </div>
 </div>
@@ -67,11 +60,11 @@
 
             <?php
             $this->beginWidget('zii.widgets.CPortlet', array(
-                'title'=>'Operations',
+                'title' => 'Operations',
             ));
             $this->widget('zii.widgets.CMenu', array(
-                'items'=>$this->menu,
-                'htmlOptions'=>array('class'=>'operations'),
+                'items' => $this->menu,
+                'htmlOptions' => array('class' => 'nav nav-tabs nav-stacked'),
             ));
             $this->endWidget();
             ?>
@@ -82,7 +75,7 @@
     <hr>
 
     <footer>
-        <p>&copy; <a href="http://itaktika.ru/">Taktika</a> 2012</p>
+        <p>&copy; Компания <a href="http://itaktika.ru/">Тактика</a> <?=date("Y")?></p>
     </footer>
 </div>
 

@@ -4,6 +4,15 @@ class AdminGenModule extends CWebModule
 {
     public $addControllerMenu = true;
 
+    /**
+     * Array of actions and so ons to be overriden with admin layout
+     * @var array
+     */
+    public $override = array(
+        "admin", "create", "update", "delete",
+        "emailSender/mailSubscribe/send"
+    );
+
     private $assets;
 
     public function init() {
@@ -92,7 +101,8 @@ class AdminGenModule extends CWebModule
     public function populateAdminAssets() {
         $cs = Yii::app()->getClientScript();
         $cs->registerCoreScript("jquery");
-        $cs->registerCssFile($this->assets . '/css/bootstrap.css');
-        $cs->registerScriptFile($this->assets . '/js/bootstrap.js');
+        $cs->registerCssFile($this->assets . '/css/bootstrap.min.css');
+        $cs->registerCssFile($this->assets . '/css/bootstrap-yii.css');
+        $cs->registerScriptFile($this->assets . '/js/bootstrap.min.js');
     }
 }
