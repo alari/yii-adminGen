@@ -18,7 +18,7 @@ $links = Yii::app()->getModule("adminGen")->getLinks();
     <?if(count($focusLinks)){?>
 <h4>Основные действия</h4>
 
-<div class="form-actions row" style="text-align: center">
+<div class="form-actions row">
     <?if($focusColumned) foreach($focusLinks as $flinks) {?>
     <div class="span<?=$focusColumned?>">
         <?array_map($focus, $flinks)?>

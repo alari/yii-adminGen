@@ -10,17 +10,20 @@ class AdminGenModule extends CWebModule
      */
     public $override = array(
         "admin", "create", "update", "delete",
-        "emailSender/mailSubscribe/send"
+        "emailSender/mailSubscribe/send",
+        "user/*"
     );
 
-    public $focusLinks/* = array(
+    public $focusLinks /* = array(
         array("label"=>"Добавить товар", "url"=>array("/catalogue/product/create"), "icon"=>"plus-sign", "role"=>"add-product"),
         array("label"=>"Добавить товар", "url"=>array("/catalogue/product/create"), "icon"=>"plus-sign", "role"=>"custom"),
-    )*/;
+    )*/
+    ;
 
     private $assets;
 
-    public function init() {
+    public function init()
+    {
         $this->assets = Yii::app()->getAssetManager()->publish(__DIR__ . DIRECTORY_SEPARATOR . 'assets');
     }
 
@@ -77,8 +80,12 @@ class AdminGenModule extends CWebModule
         if (!$moduleLinks) {
             $moduleLinks = array(
                 "user" => array(
-                    array('url' => Yii::app()->getModule('user')->profileUrl, 'label' => Yii::app()->getModule('user')->t("Profile"), 'visible' => !Yii::app()->user->isGuest),
-                    array('url' => Yii::app()->getModule('user')->logoutUrl, 'label' => Yii::app()->getModule('user')->t("Logout") . ' (' . Yii::app()->user->name . ')', 'visible' => !Yii::app()->user->isGuest),
+                    "label" => Yii::app()->getModule('user')->t("Manage Users"),
+                    "url" => "#",
+                    "items" => array(
+                        array('url' => Yii::app()->getModule('user')->profileUrl, 'label' => Yii::app()->getModule('user')->t("Profile"), 'visible' => !Yii::app()->user->isGuest),
+                        array('url' => Yii::app()->getModule('user')->logoutUrl, 'label' => Yii::app()->getModule('user')->t("Logout") . ' (' . Yii::app()->user->name . ')', 'visible' => !Yii::app()->user->isGuest),
+                    )
                 )
             );
         }
@@ -89,7 +96,8 @@ class AdminGenModule extends CWebModule
         return null;
     }
 
-    public function populateAdminAssets() {
+    public function populateAdminAssets()
+    {
         $cs = Yii::app()->getClientScript();
         $cs->registerCoreScript("jquery");
         $cs->registerCssFile($this->assets . '/css/bootstrap.min.css');
