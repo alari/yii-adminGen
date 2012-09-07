@@ -85,13 +85,13 @@
     display:block;
 }
 
-.b-admin-sub-navigation, li ul{
+.b-admin-sub-navigation, .b-admin-sub-navigation li ul{
     position:relative;
     left:-100%;
     top:-31px;
     display:none;
 }
 
-.b-admin-sub-navigation li, li ul li{
+.b-admin-sub-navigation li, .b-admin-sub-navigation li ul li{
     border-right:1px solid #4d5158;
 }
