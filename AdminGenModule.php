@@ -13,6 +13,10 @@ class AdminGenModule extends CWebModule
         "emailSender/mailSubscribe/send"
     );
 
+    public $focusLinks = array(
+        array("label"=>"Добавить товар", "url"=>array("/catalogue/product/create"), "icon"=>"plus-sign", "role"=>"custom")
+    );
+
     private $assets;
 
     public function init() {
@@ -22,7 +26,7 @@ class AdminGenModule extends CWebModule
     public function getLinks()
     {
         $links = array();
-        foreach (Yii::app()->getModules() as $name => $conf) if($name != 'user') {
+        foreach (Yii::app()->getModules() as $name => $conf) {
             $module = Yii::app()->getModule($name);
             $addLinks = method_exists($module, "adminGenLinks") ? $module->adminGenLinks() : $this->getModuleAdminLinks($name);
             if (is_array($addLinks) && count($addLinks)) {
@@ -45,21 +49,7 @@ class AdminGenModule extends CWebModule
     {
         $links = array();
         // Collecting module links -- generic or overriden
-        foreach (Yii::app()->getModules() as $name => $conf) {
-            $module = Yii::app()->getModule($name);
-            $addLinks = method_exists($module, "adminGenLinks") ? $module->adminGenLinks() : $this->getModuleAdminLinks($name);
-            if (is_array($addLinks) && count($addLinks)) {
-                if (!isset($addLinks[0]) || !is_array($addLinks[0])) {
-                    $addLinks = array($addLinks);
-                }
-                foreach ($addLinks as $l) {
-                    if (!array_key_exists("visible", $l)) {
-                        $l["visible"] = !Yii::app()->user->isGuest;
-                    }
-                    $links[] = $l;
-                }
-            }
-        }
+        $links = $this->getLinks();
 
         // Controller admin links
         if ($this->addControllerMenu) {
@@ -102,6 +92,7 @@ class AdminGenModule extends CWebModule
         $cs = Yii::app()->getClientScript();
         $cs->registerCoreScript("jquery");
         $cs->registerCssFile($this->assets . '/css/bootstrap.min.css');
+        $cs->registerCssFile($this->assets . '/css/admin-gen.css');
         $cs->registerCssFile($this->assets . '/css/bootstrap-yii.css');
         $cs->registerScriptFile($this->assets . '/js/bootstrap.min.js');
     }

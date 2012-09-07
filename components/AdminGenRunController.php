@@ -6,7 +6,10 @@
 class AdminGenRunController extends CController
 {
     public function run($actionID) {
-        $id = $this->module->id."/".$this->id."/".$actionID;
+        $id = $this->id."/".$actionID;
+        if($this->module) {
+            $id = $this->module->id."/".$id;
+        }
         $override = Yii::app()->getModule("adminGen")->override;
         foreach($override as $l) {
             if($this->endsWith($id, $l)) {
