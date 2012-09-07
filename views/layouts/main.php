@@ -6,13 +6,6 @@ $links = Yii::app()->getModule('adminGen')->getLinks();
 <head>
     <title><?php echo CHtml::encode(Yii::app()->name); ?>  Admin</title>
     <?Yii::app()->getModule("adminGen")->populateAdminAssets()?>
-
-    <style type="text/css">
-        body {
-            padding-top: 60px;
-            padding-bottom: 40px;
-        }
-    </style>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>

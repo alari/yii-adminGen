@@ -13,9 +13,10 @@ class AdminGenModule extends CWebModule
         "emailSender/mailSubscribe/send"
     );
 
-    public $focusLinks = array(
-        array("label"=>"Добавить товар", "url"=>array("/catalogue/product/create"), "icon"=>"plus-sign", "role"=>"custom")
-    );
+    public $focusLinks/* = array(
+        array("label"=>"Добавить товар", "url"=>array("/catalogue/product/create"), "icon"=>"plus-sign", "role"=>"add-product"),
+        array("label"=>"Добавить товар", "url"=>array("/catalogue/product/create"), "icon"=>"plus-sign", "role"=>"custom"),
+    )*/;
 
     private $assets;
 
