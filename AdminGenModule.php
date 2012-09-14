@@ -10,7 +10,7 @@ class AdminGenModule extends CWebModule
      */
     public $override = array(
         "admin", "create", "update", "delete",
-        "emailSender/mailSubscribe/send",
+        "emailSender/mailSubscribe/*",
         "user/*"
     );
 
