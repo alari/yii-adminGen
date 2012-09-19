@@ -5,19 +5,39 @@
  */
 class AdminGenRunController extends CController
 {
-    public function run($actionID) {
-        $id = $this->id."/".$actionID;
-        if($this->module) {
-            $id = $this->module->id."/".$id;
-        }
-        $override = Yii::app()->getModule("adminGen")->override;
-        foreach($override as $l) {
-            if($this->endsWith($id, $l) || ($l[strlen($l)-1]=="*" && $this->startsWith($id, substr($l,0,-1)))) {
-                $this->layout = "adminGen.views.layouts.main";
-                break;
+    protected $adminLayout = "adminGen.views.layouts.main";
+    private $adminGenId;
+    private $isOverriden = false;
+
+    public function run($actionID)
+    {
+        $this->adminGenId = $this->id . "/" . $actionID;
+
+        if ($this->module) {
+            if (isset($this->module->adminGenOverride) && is_array($this->module->adminGenOverride)) {
+                $this->isOverridenWithin($this->module->adminGenOverride);
             }
+            $this->adminGenId = $this->module->id . "/" . $this->adminGenId;
         }
+        $this->isOverridenWithin(Yii::app()->getModule("adminGen")->override);
         parent::run($actionID);
+    }
+
+    private function isOverridenWithin(array $override)
+    {
+        if (!$this->isOverriden) foreach ($override as $l) {
+            if ($this->isOverridenBy($l)) return $this->isOverriden = true;
+        }
+        return false;
+    }
+
+    private function isOverridenBy($mask)
+    {
+        if ($this->endsWith($this->adminGenId, $mask) || ($mask[strlen($mask) - 1] == "*" && $this->startsWith($this->adminGenId, substr($mask, 0, -1)))) {
+            $this->layout = $this->adminLayout;
+            return true;
+        }
+        return false;
     }
 
     private function endsWith($haystack, $needle)

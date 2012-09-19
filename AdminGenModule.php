@@ -10,9 +10,7 @@ class AdminGenModule extends CWebModule
      */
     public $override = array(
         "admin", "create", "update", "delete",
-        "emailSender/mailSubscribe/*",
         "user/*",
-        "library/libraryType/*"
     );
 
     public $focusLinks /* = array(
