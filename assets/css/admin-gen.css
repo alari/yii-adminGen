@@ -173,3 +173,63 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/*custom color scheme*/
+.row-fluid{
+	min-height:55em;
+}
+
+.container-fluid footer{
+	text-align:center;
+}
+
+.navbar-inverse .navbar-inner{
+	background-color:orange;
+	background-image:url(../img/page-content__wrapper__before.png);
+
+}
+
+.navbar-inverse .brand, .navbar-inverse .nav > li > a{
+	color:white;
+	opacity:.75;
+}
+
+.navbar-inverse .brand, .navbar-inverse .nav > li > a:hover {
+	opacity:1;
+}
+
+.navbar-inverse .nav li.dropdown > .dropdown-toggle .caret{
+	border-bottom-color:white;
+	border-top-color:white;
+}
+
+body{
+	background-image:url(../img/page-content_pattern-stripe.png);   
+}
+
+.navbar-inverse .nav li.dropdown.open > .dropdown-toggle, 
+.navbar-inverse .nav li.dropdown.active > .dropdown-toggle, 
+.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle{
+	background-color:#888;
+	opacity:1;
+}
+
+.dataGrid{
+	border-collapse:separate;
+	border-spacing:.25em;
+}
+
+.dataGrid td,.dataGrid th{
+	padding:1em;
+	line-height:1em;
+	font-size:.85em;
+}
+
+.nav-tabs.nav-stacked > li > a{
+	background:white !important;
+}
+
+.portlet-title{
+	font-size:1.5em;
+	margin:10px 0 0;
+	line-height:48px;
+}
