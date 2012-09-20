@@ -233,3 +233,17 @@ body{
 	margin:10px 0 0;
 	line-height:48px;
 }
+
+
+/*all actions */
+.row-fluid [class*="span"].m-nomargin:first-child {
+	margin-left:0;
+}
+
+.row-fluid [class*="span"].m-nomargin{
+	margin-left:1%;
+}
+
+.m-nomargin .span12{
+	  margin-left:0 !important;
+}

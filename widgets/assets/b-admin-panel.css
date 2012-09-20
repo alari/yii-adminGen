@@ -1,100 +1,98 @@
-.b-admin-panel * {
-    padding: 0;
-    margin: 0;
+.b-admin-panel *{ padding:0; margin:0;
 }
 
-.b-admin-navigation {
-    margin-top: 20px;
-    display: none;
+.b-admin-navigation{
+margin-top:20px;
+display:none;
 }
 
-.b-admin-panel:hover .b-admin-navigation, .b-admin-panel:hover .e-admin-panel-header {
-    display: block;
+.b-admin-panel:hover .b-admin-navigation, .b-admin-panel:hover .e-admin-panel-header{
+display:block;
 }
 
-.b-admin-panel:hover {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    font-weight: normal;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 160px;
-    background: #292d33;
-    padding-bottom: 9px;
+.b-admin-panel:hover{
+font-family:Helvetica, Arial, sans-serif;
+font-size:14px;
+font-weight:normal;
+position:fixed;
+right:0;
+top:0;
+width:auto;
+background:#292d33;
+padding-bottom:9px;
 
-    -webkit-border-bottom-left-radius: 9px;
-    -moz-border-radius-bottom-left: 9px;
-    border-bottom-left-radius: 9px;
+-webkit-border-bottom-left-radius: 9px;
+-moz-border-radius-bottom-left: 9px;
+border-bottom-left-radius: 9px;
 }
 
-.e-admin-panel-header {
-    display: none;
-    font-size: 10px;
-    font-weight: normal;
-    padding: 7px 0 0 15px;
-    color: white;
+.e-admin-panel-header{
+display:none;
+font-size:10px;
+font-weight:normal;
+padding:7px 0 0 15px;
+color:white;
 }
 
-.e-admin-navigation-button {
-    position: absolute;
-    display: block;
-    text-indent: -9999px;
-    width: 30px;
-    height: 30px;
-    top: 0;
-    right: 0;
-    background: url("b-admin-panel_sprite_bg.png") no-repeat;
-    background-position: -30px -88px;
+.e-admin-navigation-button{
+position:absolute;
+display:block;
+text-indent:-9999px;
+width:30px;
+height:30px;
+top:0;
+right:0;
+background: url("../images/b-admin-panel_sprite_bg.png") no-repeat;
+background-position:-30px -88px;
 }
 
-.b-admin-panel:hover .e-admin-navigation-button {
-    background-position: 0px -58px;
+.b-admin-panel:hover .e-admin-navigation-button{
+background-position:0px -58px;
 }
 
-.e-admin-nav-item {
-    width: 100%;
-    height: auto;
-    list-style: none;
-    position: relative;
+.e-admin-nav-item{
+width:100%;
+height:29px;
+list-style:none;
 }
-
-.e-admin-nav-button {
-    display: block;
-    height: 29px;
-    padding-left: 5%;
-    padding-right: 5%;
-    color: white;
-    color: rgba(255, 255, 255, .55);
-    background: #292d33 url("b-admin-panel_sprite_bg.png") repeat-x;
-    text-decoration: none !important;
-    border-top: 1px solid #4d5158;
-    border-bottom: 1px solid #262626;
-    -moz-transition: all .25s ease;
-    -webkit-transition: all .25s ease;
-    -o-transition: all .25s ease;
-    transition: all .25s ease;
-    line-height: 23px;
+.e-admin-nav-button{
+display:block;
+height:29px;
+padding-left:5%;
+padding-right:5%;
+color:white;
+color:rgba(255,255,255,.55);
+background:#292d33 url("../images/b-admin-panel_sprite_bg.png") repeat-x;
+text-decoration:none !important;
+border-top:1px solid #4d5158;
+border-bottom:1px solid #262626;
+-moz-transition:all .25s ease;
+-webkit-transition:all .25s ease;
+-o-transition:all .25s ease;
+transition:all .25s ease;
+line-height:23px;
 }
 
 .e-admin-nav-button:hover {
-    background: #658cfd url("b-admin-panel_sprite_bg.png") repeat-x;
-    color: rgba(255, 255, 255, .75);
-    border-bottom: 1px solid #262626;
-    border-top: 1px solid #7698ff;
+background:#658cfd url("../images/b-admin-panel_sprite_bg.png") repeat-x;
+color:rgba(255,255,255,.75);
+border-bottom:1px solid #262626;
+border-top:1px solid #7698ff;
+//background-position:0 -29px;
 }
 
-.e-admin-nav-item:hover .b-admin-sub-navigation, .e-admin-nav-item:hover ul {
-    display: block;
+
+.e-admin-nav-item:hover .b-admin-sub-navigation, .e-admin-nav-item:hover ul{
+display:block;
 }
 
-.b-admin-sub-navigation, .b-admin-sub-navigation li ul {
-    position: relative;
-    left: -100%;
-    top: -31px;
-    display: none;
+.b-admin-sub-navigation, li ul{
+position:relative;
+left:-100%;
+top:-31px;
+display:none;
 }
 
-.b-admin-sub-navigation li, .b-admin-sub-navigation li ul li {
-    border-right: 1px solid #4d5158;
+.b-admin-sub-navigation li, li ul li{
+border-right:1px solid #4d5158;
 }
