@@ -247,3 +247,10 @@ body{
 .m-nomargin .span12{
 	  margin-left:0 !important;
 }
+
+
+/*editor form no-margin for row*/
+
+.form #page-form .row{
+	margin-left:0;
+}
