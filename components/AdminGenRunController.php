@@ -19,8 +19,6 @@ class AdminGenRunController extends CController
             }
             $this->adminGenId = $this->module->id . "/" . $this->adminGenId;
         }
-        echo "$this->adminGenId";
-        print_r(Yii::app()->getModule("adminGen")->override);
         $this->isOverridenWithin(Yii::app()->getModule("adminGen")->override);
         parent::run($actionID);
     }
@@ -35,11 +33,9 @@ class AdminGenRunController extends CController
 
     private function isOverridenBy($mask)
     {
-        echo "$mask != $this->adminGenId<br/>";
         if ($mask == $this->adminGenId
             || $this->endsWith($this->adminGenId, $mask)
             || ($mask[strlen($mask) - 1] == "*" && $this->startsWith($this->adminGenId, substr($mask, 0, -1)))) {
-            echo "ok!";
             $this->layout = $this->adminLayout;
             return true;
         }
