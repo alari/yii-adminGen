@@ -1,0 +1,7 @@
+.idea
+*.log
+/assets/*
+*.swp
+*~
+/nbproject
+/protected/runtime/*
