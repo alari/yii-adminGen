@@ -188,8 +188,8 @@ body {
 }
 
 .navbar-inverse .brand, .navbar-inverse .nav > li > a{
-	color:white;
-	opacity:.75;
+	color:#000;
+	text-shadow:none !important;
 }
 
 .navbar-inverse .brand, .navbar-inverse .nav > li > a:hover {
