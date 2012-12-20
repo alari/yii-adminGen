@@ -12,7 +12,7 @@ $links = Yii::app()->getModule('adminGen')->getLinks();
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container-fluid">
-            <a href="/" class="brand"><?php echo CHtml::encode(Yii::app()->name); ?> admin</a>
+            <a href="/" class="brand m-admin-logo"><?php echo CHtml::encode(Yii::app()->name); ?> admin</a>
 
             <div class="nav-collapse">
                 <ul class="nav">

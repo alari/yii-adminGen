@@ -7,7 +7,12 @@ body {
     padding: 10px 20px;
     margin: 10px 20px;
 }
-
+.m-admin-logo{
+	color:transparent;
+	text-indent:-9999px;
+	width:110px;
+	background:url(/img/logo-for-admin-panel.png) no-repeat center center transparent;
+	}
 /*ÐÐ¾Ð±Ð°Ð²Ð¸ÑÑ Ð½Ð¾Ð²Ð¾ÑÑÑ*/
 .admin-gen-add-news {
     background-color: hsl(16, 100%, 36%) !important;
