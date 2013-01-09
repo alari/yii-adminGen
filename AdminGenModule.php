@@ -23,7 +23,7 @@ class AdminGenModule extends CWebModule
 
     public function init()
     {
-        $this->assets = Yii::app()->getAssetManager()->publish(__DIR__ . DIRECTORY_SEPARATOR . 'assets');
+        $this->assets = Yii::app()->getAssetManager()->publish(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'assets');
     }
 
     public function getLinks()
