@@ -21,7 +21,7 @@ $links = Yii::app()->getModule('adminGen')->getLinks();
                     <? foreach ($links as $link) { ?>
                     <? if (isset($link['items'])) { ?>
                         <li class="dropdown">
-                            <?=CHtml::link($link['label'] . '<b class="caret"></b>', $link['url'] ? : "#", array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'))?>
+                            <?=CHtml::link($link['label'] . '<b class="caret"></b>', $link['url'] ? $link['url'] : "#", array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'))?>
                             <?$this->widget('zii.widgets.CMenu', array(
                             'items' => $link['items'],
                             'htmlOptions' => array('class' => 'dropdown-menu'),
