@@ -4,7 +4,7 @@ $focusColumned = false;
 if(count($focusLinks) && !isset($focusLinks[0]['label'])) {
     $focusColumned = 12/count($focusLinks);
 }
-$focus = function($l){
+function focus ($l){
     echo CHtml::link("<i class='icon-{$l['icon']}'></i> " . $l["label"], $l["url"], array("class" => "btn admin-gen-btn admin-gen-" . $l["role"]));
 };
 
@@ -30,9 +30,9 @@ foreach ($links as $l) {
 <div class="form-actions row">
     <?if($focusColumned) foreach($focusLinks as $flinks) {?>
     <div class="span<?=$focusColumned?>">
-        <?array_map($focus, $flinks)?>
+        <?array_map("focus", $flinks)?>
     </div>
-    <?} else array_map($focus, $focusLinks)?>
+    <?} else array_map("focus", $focusLinks)?>
 </div>
 
 <br/><br/>
@@ -45,7 +45,7 @@ foreach ($links as $l) {
     <div class="span4 m-nomargin">
         <?foreach ($colinmn as $l) {
             echo "<div class='span12'>";
-            echo "<strong>" . CHtml::link($l["label"], $l["url"] ? : "#") . "</strong><br/>";
+            echo "<strong>" . CHtml::link($l["label"], $l["url"] ? $l["url"] : "#") . "</strong><br/>";
             if (isset($l["items"])) $this->widget('zii.widgets.CMenu', array(
                 'items' => $l["items"],
                 'htmlOptions' => array('class' => 'nav nav-tabs nav-stacked'),
